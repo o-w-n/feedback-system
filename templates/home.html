@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+            <img src=”/img/logo_test.png” alt=Logo>
+        </svg>
+    </a>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="{% url 'home' %}" class="nav-link px-2 link-secondary">Як це працює</a></li>
+        <li><a href="#" class="nav-link px-2 link-secondary">Можливості системи</a></li>
+        <li><a href="#" class="nav-link px-2 link-secondary">Чому ми?</a></li>
+        <li><a href="#" class="nav-link px-2 link-secondary">Конфіденційність</a></li>
+        <li><a href="#" class="nav-link px-2 link-secondary">Тарифи</a></li>
+    </ul>
+
+    <div class="col-md-3 text-end">
+        <a type="button" class="btn btn-outline-primary me-2" href="{% url 'admin:login' %}">Login</a>
+        <a type="button" class="btn btn-primary" href="{% url 'admin:login' %}">Sign Up</a>
+    </div>
+</header>
+{% endblock header %}
+
+{% block message %}
+{% if Success == True%}
+<div class="alert alert-success" role="alert">
+    Фідбек відправлений!
+</div>
+{% elif Success == False%}
+<div class="alert alert-danger" role="alert">
+    Фідбек не відправлений. Спробуйте ще раз!
+</div>
+{% endif%}
+{% endblock message %}
+
+{% block form %}
+<div class="form-body d-flex justify-content-center mw-50 p-3"
+     style="width: 450px; length: 100px; background-color: rgba(204,204,204,0.1)">
+    <div class="row ">
+        <div class="form-holder">
+            <div class="form-content ">
+                <div class="form-items " style="width: 400px;">
+                    <h2>Залиште свій відгук</h2>
+                    <form class="requires-validation" method="post" action="{% url 'send' %}" novalidate>
+                        {% csrf_token %}
+                        <div class="col-md-12">
+                            <label for="id_text" class="form-label">Ваше звернення</label>
+                            {{form.text}}
+                            <div class="valid-feedback">Поле текст звернення дійсне!</div>
+                            <div class="invalid-feedback">Поле текст звернення не може бути порожнім!</div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+
+                                <label for="id_email" class="form-label">Оберіть тематику</label>
+                                {{form.project}}
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <label for="id_email" class="form-label">Оберіть співробітника</label>
+                                {{form.employee}}
+                            </div>
+                        </div>
+
+                        <!--                        <div class="col-md-12">-->
+                        <!--                            <label for="id_email" class="form-label">Оберіть тематику звернення</label>-->
+
+                        <!--                            {{form.project}}-->
+                        <!--                            <div class="valid-feedback">Ви вибрали тематику!</div>-->
+                        <!--                            <div class="invalid-feedback">Будь ласка, виберіть тематику!</div>-->
+                        <!--                        </div>-->
+
+                        <!--                        <div class="col-md-12">-->
+                        <!--                            <label for="id_email" class="form-label">Оберіть співробітника</label>-->
+
+                        <!--                            {{form.employee}}-->
+                        <!--                            <div class="valid-feedback">Ви вибрали працівника!</div>-->
+                        <!--                            <div class="invalid-feedback">Будь ласка, виберіть працівника!</div>-->
+                        <!--                        </div>-->
+
+                        <div class="col-md-12">
+                            <label for="id_email" class="form-label">Ваш email</label>
+
+                            {{form.email}}
+                            <div id="emailHelp" class="form-text">* вкажіть пошту, щоб отримати відповідь, ми гарантуємо
+                                анонімність
+                            </div>
+                            <div class="valid-feedback">Поле текст звернення дійсне!</div>
+                            <div class="invalid-feedback">Поле текст звернення не може бути порожнім!</div>
+                        </div>
+
+                        <div>
+                            <label class="form-label"></label>
+                            <table class="table">
+                                <caption>наскільки ви були задоволені</caption>
+                                <thead>
+                                <tr>
+                                    <th class="first-col"></th>
+
+                                    <th scope="col">1</th>
+                                    <th scope="col">2</th>
+                                    <th scope="col">3</th>
+                                    <th scope="col">4</th>
+                                    <th scope="col">5</th>
+                                </tr>
+                                <thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td><input class="form-check-input" type="radio" name="flexRadioDefault"
+                                               id="flexRadioDefault2" checked>
+                                    <td><input class="form-check-input" type="radio" name="flexRadioDefault">
+                                        <!--                                        <label class="form-check-label" for="flexRadioDefault2"></label></td>-->
+                                    <td><input class="form-check-input" type="radio" name="flexRadioDefault">
+                                        <label class="form-check-label" for="flexRadioDefault2"></label></td>
+                                    <td><input class="form-check-input" type="radio" name="flexRadioDefault">
+                                        <!--                                        <label class="form-check-label" for="flexRadioDefault2"></label></td>-->
+                                    <td><input class="form-check-input" type="radio" name="flexRadioDefault">
+                                        <!--                                       <label class="form-check-label" for="flexRadioDefault2"></label></td>-->
+                                    </th>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+
+                        <div class="col-md-12 ">
+                            <input type="submit" value="Send Message" class="btn btn-primary rounded-0 py-2 px-4">
+                            <span class="submitting"></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock form %}
+
+
+{% block footer %}
+<footer class="py-1">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <!--        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Як це працює</a></li>-->
+        <!--        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Можливості системи</a></li>-->
+        <!--        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Чому ми?</a></li>-->
+        <!--        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Конфіденційність</a></li>-->
+        <!--        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Тарифи</a></li>-->
+    </ul>
+    <p class="text-center text-muted">Copyright ©
+        <script>document.write(new Date().getFullYear())</script>
+        All rights reserved.
+    </p>
+</footer>
+{% endblock footer %}
