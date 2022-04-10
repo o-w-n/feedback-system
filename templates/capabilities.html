@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Зробіть своє життя легшим</h1>
+            <p class="lead text-muted">Відгуки співробітників є ключем до зростання та успіху вашої команди. Спробуйте
+                інструменти анонімного зворотного зв’язку вже зараз!</p>
+
+        </div>
+    </div>
+</section>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="{% static '/img/unlimited_feedback.png' %}" alt="My image" x="50%" y="50%">
+                    <div class="card-body">
+                        <p class="card-text"><h5 class="text-center">Необмежена кількість відгуків</h5>
+                        Захищена система пропозицій дає
+                        вам можливість зібрати стільки відгуків, скільки вам потрібно, про ваш продукт, вашу
+                        компацію чи команду. Необмежений відгук означає необмежений потенціал.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="{% static '/img/customize.png' %}" alt="My image" x="50%" y="50%">
+                    <div class="card-body">
+                        <p class="card-text"><h5 class="text-center">Змінюйте зовнішній вигляд</h5><br>
+                        Особливості дизайну AFS надають вам прості інструменти, щоб налаштувати форму відповідно до
+                        вашої компанії. Додавайте свій текст, логотип або навіть змінюте фон на той, який до вподоби
+                        саме вам.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="{% static '/img/private.png' %}" alt="My image" x="50%" y="50%">
+                    <div class="card-body">
+                        <p class="card-text"><h5 class="text-center">Ваші дані – це ваші дані</h5><br>
+                        Пріоритетом AFS є збереження вашої цілісності, конфіденційності
+                        та безпеки даних. Ознайомтеся з нашими  <a href="#"><nobr>зобов’язаннями</nobr></a>
+                        щодо конфіденційності та безпеки і знайте, що саме ви володієте своїми даними.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

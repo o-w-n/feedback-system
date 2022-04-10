@@ -62,9 +62,31 @@
 {% block after_related_objects %}{% endblock %}
 
 {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+
+{% block admin_change_form_document_ready %}
+    <script id="django-admin-form-add-constants"
+            src="{% static 'admin/js/change_form.js' %}"
+            {% if adminform and add %}
+                data-model-name="{{ opts.model_name }}"
+            {% endif %}
+            async>
+    </script>
+{% endblock %}
+
+{# JavaScript for prepopulated fields #}
+{% prepopulated_fields_js %}
+
+</div>
+</form>
+    {% if original.has_reply %}
+    <h2>Відповідь на фідбек: </h2>
+    {{ original.get_reply }}
+
+    {% elif original.email%}
+
 <fieldset class="module aligned {{ fieldset.classes }}">
 <h2>Залиште свій відгук</h2>
-    <form class="requires-validation" method="post" action="{% url 'reply_feedback' %}" novalidate>
+    <form class="requires-validation" method="post" action="{% url 'reply_feedback' original.pk %}" novalidate>
         {% csrf_token %}
         <div class="form-row field-text">
                 <div>
@@ -81,19 +103,6 @@
         </div>
     </form>
 </fieldset>
-{% block admin_change_form_document_ready %}
-    <script id="django-admin-form-add-constants"
-            src="{% static 'admin/js/change_form.js' %}"
-            {% if adminform and add %}
-                data-model-name="{{ opts.model_name }}"
-            {% endif %}
-            async>
-    </script>
-{% endblock %}
-
-{# JavaScript for prepopulated fields #}
-{% prepopulated_fields_js %}
-
+    {% endif %}
 </div>
-</form></div>
 {% endblock %}

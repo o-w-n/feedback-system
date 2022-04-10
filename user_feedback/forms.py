@@ -4,11 +4,13 @@ from employees.models import Employee
 from projects.models import Project
 from django import forms
 
+
 class FeedbackForm(ModelForm):
     text = forms.CharField(widget=forms.Textarea(
         attrs={
-            'class': 'form-control',
-            'row': 5,
+            'class': 'form-control  text-area',
+            'rows': 7,
+            'cols': 30,
             'placeholder': 'Текст повідомлення'
         }
 
@@ -18,7 +20,7 @@ class FeedbackForm(ModelForm):
         attrs={
             'class': 'form-control',
             'aria-describedby': 'emailHelp',
-            'placeholder': 'Введіть адресу вашої електронної пошти'
+            'placeholder': 'Email'
         }
     ), required=False)
 
@@ -26,10 +28,13 @@ class FeedbackForm(ModelForm):
         queryset=Employee.objects.all().order_by("name"),
         widget=forms.Select(
             attrs={
-                'class': 'form-select',
+                'class': 'form-control',
+                'placeholder': 'Email'
+
             }
         ),
-        empty_label=" ",
+
+        empty_label="Співробітник",
         required=False,
     )
 
@@ -37,15 +42,14 @@ class FeedbackForm(ModelForm):
         queryset=Project.objects.all().order_by("name"),
         widget=forms.Select(
             attrs={
-                'class': 'form-select',
+                'class': 'form-control',
             }
         ),
-        empty_label=" ",
+        empty_label="Процес",
         required=False,
         label='Проект'
     )
 
     class Meta:
         model = Feedback
-        fields = ['text', 'employee', 'project', 'email']
-
+        fields = ['text', 'employee', 'project', 'email', "rating"]

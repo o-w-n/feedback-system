@@ -1,0 +1,31 @@
+.gl-star-rating--stars>span {
+margin:8px !important;
+}
+        .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .lead text-muted {
+        margin-top: 0;
+        margin-bottom: -2rem;
+      }
+      .card-body {
+         box-sizing: border-box;
+         width: 100%;
+         padding: 10px;
+      }
+<!--      .card-body {-->
+<!--         width: 200px;-->
+<!--         height: 100px;-->
+
+<!--      }-->
+
